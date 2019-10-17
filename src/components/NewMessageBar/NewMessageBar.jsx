@@ -16,10 +16,15 @@ const NewMessageBar = () => {
         store.setMessage(e.target.value);
     }
 
+    const sendMessage = (e) => {
+        if (store.newMessage !== '' && store.userName !== '')
+            store.addMessage();
+    }
+
     return (
         <div className="NewMessageBar">
             <input placeholder="Message..." value={store.newMessage} onChange={handleMessage} type="text" />
-            <button onClick={store.addMessage} type="submit">Enviar</button>
+            <button onClick={sendMessage} type="submit">Enviar</button>
         </div>
     );
 }

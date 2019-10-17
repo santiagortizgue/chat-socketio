@@ -15,6 +15,9 @@ class Store{
       }, {
         user: 'Restrepo',
         data: 'Hello'
+      }, {
+        user: 'Gaviria',
+        data: 'React forevah'
       }];
 
     addMessage = () => {
