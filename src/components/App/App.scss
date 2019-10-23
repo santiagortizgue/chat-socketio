@@ -11,6 +11,16 @@
   height: 100vh;
 
   padding: 50px;
+
+  background-color: lightgray;
+
+  &-cont{
+    margin: 15px 0;
+    padding: 8px 0;
+    width: 300px;
+
+    background-color: white;
+  }
 }
 
 .Message{

@@ -16,18 +16,20 @@ const App = () => {
   return (
     <div className="App">
 
-     <UserInput/>
+      <UserInput />
 
-      {store.arrayMessages.map((elem, i) => {
-        return (
-          <div key={i} className="Message">
-            <h3>{elem.user}</h3>
-            <p>{elem.data}</p>
-          </div>
-        )
-      })}
+      <div className="App-cont">
+        {store.arrayMessages.map((elem, i) => {
+          return (
+            <div key={i} className="Message">
+              <h3>{elem.user}</h3>
+              <p>{elem.message}</p>
+            </div>
+          )
+        })}
+      </div>
 
-     <NewMessageBar/>
+      <NewMessageBar />
     </div>
   );
 }

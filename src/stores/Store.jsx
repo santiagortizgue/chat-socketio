@@ -1,30 +1,35 @@
-import {action, decorate, observable } from 'mobx';
+import { action, decorate, observable } from 'mobx';
 
 import { createContext } from 'react';
 
-class Store{
+import io from 'socket.io-client';
+
+class Store {
+
+    //heroku
+    SocketIo = io('http://172.30.195.229:3006');
+
+    constructor() {
+
+        this.SocketIo.on('update messages', (messages) => {
+            this.arrayMessages = messages;
+            console.log(messages);
+        });
+    }
+
+
     newMessage = "";
 
-    setMessage = (newMessage)  =>{
+    setMessage = (newMessage) => {
         this.newMessage = newMessage;
     }
 
-    arrayMessages = [{
-        user: 'Santiago',
-        data: 'Hola'
-      }, {
-        user: 'Restrepo',
-        data: 'Hello'
-      }, {
-        user: 'Gaviria',
-        data: 'React forevah'
-      }];
+    arrayMessages = [];
+
+
 
     addMessage = () => {
-
-        let newArray = this.arrayMessages;
-        newArray.push({user: this.userName, data: this.newMessage});
-        this.arrayMessages = newArray;
+        this.SocketIo.emit('new message', { user: this.userName, message: this.newMessage });
 
         this.newMessage = "";
     }
